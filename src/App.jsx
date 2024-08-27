@@ -7,7 +7,8 @@ import Categories from './components/Categories';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-
+import Login from './components/Login';
+import Registration from './components/Register';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -37,21 +38,15 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar cartCount={cart.length} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products addToCart={addToCart} />} />
-        <Route
-          path="/categories"
-          element={<Categories />}
-        />
-        <Route
-          path="/cart"
-          element={
-            <Cart cart={cart} removeFromCart={removeFromCart} clearCart={clearCart} />
-          }
-        />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} clearCart={clearCart} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
       </Routes>
       <Footer />
     </Router>
